@@ -19,8 +19,8 @@ class Cliente{
 
 class ContratoLocacao{
     -codigo : int
-    -dataInicio : Date
-    -dataTermino : Date
+    -dataInicio : LocalDate
+    -dataTermino : LocalDate
     -valorFinal : double
     +consultarDetalhes()
 }
