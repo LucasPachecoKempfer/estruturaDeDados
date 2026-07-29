@@ -17,7 +17,7 @@ public class Main {
 
         Gerente gerente = new Gerente("Renato", 5000.00);
         Projeto projeto = new Projeto("Roblox", gerente, funcionarios);
-        gerente.calcularSalario();
+        gerente.calcularSalario(true);
 
         System.out.println(projeto.toString());
         

@@ -6,8 +6,11 @@ public class Gerente extends Funcionario {
         super(nome, salarioBase);
     }
 
-    public void calcularSalario() {
-        super.setSalarioFinal(getSalarioBase() * (1 + projeto.getFuncionarios().size() * 0.01));
+    public void calcularSalario(boolean finalizado) {
+
+        super.calcularSalario(finalizado);
+
+        setSalarioFinal(getSalarioFinal() * (1 + projeto.getFuncionarios().size() * 0.01));
     }
 
     public Projeto getProjeto() {
