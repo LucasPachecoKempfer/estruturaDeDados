@@ -11,14 +11,15 @@ public class Main {
         funcionarios.add(new Funcionario("Antonio", 1000.00));
         funcionarios.add(new Funcionario("Carlos", 1000.00));
 
+        for (Funcionario p : funcionarios) {
+            p.calcularSalario(true);
+        }
+
         Gerente gerente = new Gerente("Renato", 5000.00);
-
         Projeto projeto = new Projeto("Roblox", gerente, funcionarios);
+        gerente.calcularSalario();
 
-
-
-
-
-
+        System.out.println(projeto.toString());
+        
     }
 }
