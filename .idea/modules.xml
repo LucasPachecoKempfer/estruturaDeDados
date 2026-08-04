@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Atividade1/Atividade1.iml" filepath="$PROJECT_DIR$/Atividade1/Atividade1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Atividade2/Atividade2.iml" filepath="$PROJECT_DIR$/Atividade2/Atividade2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Atividades-00---Revis-o-e-TADs.iml" filepath="$PROJECT_DIR$/.idea/Atividades-00---Revis-o-e-TADs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Atividade00/Questao1/Questao1.iml" filepath="$PROJECT_DIR$/Atividade00/Questao1/Questao1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Atividade00/Questao2/Questao2.iml" filepath="$PROJECT_DIR$/Atividade00/Questao2/Questao2.iml" />
     </modules>
   </component>
 </project>
