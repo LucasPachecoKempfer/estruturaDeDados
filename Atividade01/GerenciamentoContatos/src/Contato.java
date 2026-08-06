@@ -4,15 +4,15 @@ public class Contato {
     private String telefone;
     private String email;
 
-    public Contato(String nome, String telefone) {
-        this.nome = nome;
-        this.telefone = telefone;
-    }
-
     public Contato(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Contato(String nome, String telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -37,5 +37,12 @@ public class Contato {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome +
+                "\nTelefone: " + telefone +
+                "\nEmail: " + email;
     }
 }
