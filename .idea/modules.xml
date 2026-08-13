@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Atividade01/GerenciamentoContatos/GerenciamentoContatos.iml" filepath="$PROJECT_DIR$/Atividade01/GerenciamentoContatos/GerenciamentoContatos.iml" />
       <module fileurl="file://$PROJECT_DIR$/Atividade00/Questao1/Questao1.iml" filepath="$PROJECT_DIR$/Atividade00/Questao1/Questao1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Atividade00/Questao2/Questao2.iml" filepath="$PROJECT_DIR$/Atividade00/Questao2/Questao2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testesAulas/testesAulas.iml" filepath="$PROJECT_DIR$/testesAulas/testesAulas.iml" />
     </modules>
   </component>
 </project>
