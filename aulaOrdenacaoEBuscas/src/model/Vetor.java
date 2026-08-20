@@ -80,36 +80,17 @@ public class Vetor<T extends Comparable<T>>{
 
     @SuppressWarnings("unchecked")
     public void preencherOrdenado(int quantidade, int range) {
-        if (quantidade > range) {
-            throw new IllegalArgumentException("A quantidade não pode ser maior que o range sem repetição.");
-        }
-
         for (int i = 0; i < quantidade; i++) {
+            // Gera o número randômico e faz o cast para T (funciona se T for Integer)
             T numero = (T) Integer.valueOf(random.nextInt(range));
 
+            // Encontra a posição correta para manter o vetor ordenado
             int pos = 0;
-            boolean duplicado = false;
-
-            while (pos < obterTamanho()) {
-                T atual = ler(pos);
-
-                if (atual.compareTo(numero) == 0) {
-                    duplicado = true;
-                    break;
-                }
-
-                if (atual.compareTo(numero) > 0) {
-                    break; // Achou a posição certa para inserir
-                }
-
+            while (pos < obterTamanho() && ler(pos).compareTo(numero) < 0) {
                 pos++;
             }
 
-            if (duplicado) {
-                i--;
-                continue;
-            }
-
+            // Insere na posição ordenada (abre espaço e desloca os elementos)
             inserirNaPosicao(pos, numero);
         }
     }
