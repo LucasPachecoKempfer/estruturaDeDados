@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-public class Vetor<T> {
+public class Vetor<T extends Comparable<T>>{
 
     private T[] elementos;
     private int tamanho;
@@ -78,17 +78,33 @@ public class Vetor<T> {
         System.out.println("]");
     }
 
-    public void preencherOrdenado(int tamanho, int range){
+    @SuppressWarnings("unchecked")
+    public void preencherOrdenado(int quantidade, int range) {
+        for (int i = 0; i < quantidade; i++) {
+            // Gera o número randômico e faz o cast para T (funciona se T for Integer)
+            T numero = (T) Integer.valueOf(random.nextInt(range));
 
-        for (int i = 0; i < elementos.length; i++) {
-            int numero = random.nextInt(range);
-
-            for (int j = 0; j < obterTamanho(); j++) {
-                if (numero > ler(j){
-
-                }
+            // Encontra a posição correta para manter o vetor ordenado
+            int pos = 0;
+            while (pos < obterTamanho() && ler(pos).compareTo(numero) < 0) {
+                pos++;
             }
+
+            // Insere na posição ordenada (abre espaço e desloca os elementos)
+            inserirNaPosicao(pos, numero);
         }
+    }
+
+    private void inserirNaPosicao(int pos, T elemento) {
+        if (tamanho == elementos.length) {
+            expandir();
+        }
+        // Desloca elementos para a direita
+        for (int i = tamanho; i > pos; i--) {
+            elementos[i] = elementos[i - 1];
+        }
+        elementos[pos] = elemento;
+        tamanho++;
     }
 
 }
