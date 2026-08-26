@@ -26,6 +26,10 @@ public class Vetor<T extends Comparable<T>>{
         }
     }
 
+    public T[] obterElementos() {
+        return elementos;
+    }
+
     public void inserir(T elemento) {
         if (tamanho == elementos.length) {
             expandir();
@@ -81,37 +85,22 @@ public class Vetor<T extends Comparable<T>>{
     @SuppressWarnings("unchecked")
     public void preencherOrdenado(int quantidade, int range) {
         if (quantidade > range) {
-            throw new IllegalArgumentException("A quantidade não pode ser maior que o range sem repetição.");
+            throw new IllegalArgumentException(
+                    "A quantidade não pode ser maior que o range sem repetição."
+            );
         }
 
-        for (int i = 0; i < quantidade; i++) {
-            T numero = (T) Integer.valueOf(random.nextInt(range));
+        java.util.HashSet<Integer> numeros = new java.util.HashSet<>();
 
-            int pos = 0;
-            boolean duplicado = false;
-
-            while (pos < obterTamanho()) {
-                T atual = ler(pos);
-
-                if (atual.compareTo(numero) == 0) {
-                    duplicado = true;
-                    break;
-                }
-
-                if (atual.compareTo(numero) > 0) {
-                    break; // Achou a posição certa para inserir
-                }
-
-                pos++;
-            }
-
-            if (duplicado) {
-                i--;
-                continue;
-            }
-
-            inserirNaPosicao(pos, numero);
+        while (numeros.size() < quantidade) {
+            numeros.add(random.nextInt(range));
         }
+
+        for (Integer numero : numeros) {
+            inserir((T) numero);
+        }
+
+        java.util.Arrays.sort(elementos, 0, tamanho);
     }
 
     public void inserirNaPosicao(int pos, T elemento) {
