@@ -1,42 +1,140 @@
+import java.util.Scanner;
+
 public class Principal {
       static void main() {
 
-      Agenda agenda = new Agenda(5);
+            Scanner scanner = new Scanner(System.in);
 
-      agenda.adicionarContato(new Contato("Lucas", "4898889-9330", "lpachecokempfer@gmail.com"));
-      agenda.adicionarContato(new Contato("Rogério", "4899999-9999", "rogerio@gmail.com"));
+            Agenda agenda = new Agenda(5);
 
-      System.out.println("\nbuscar por nome: ");
-      System.out.println(agenda.buscarPorNome("Lucas"));
+            int opcao;
 
-      System.out.println("\natualizando: ");
-      agenda.atualizarContato("Lucas", "4891111-1111", "novoemailpratestar@gmail.com");
-      System.out.println(agenda.buscarPorNome("Lucas"));
+            do {
 
-      System.out.println("\nbuscar por telefone: ");
-      System.out.println(agenda.buscarPorTelefone("4891111-1111"));
+                  System.out.println("\n--- Menu Agenda ---");
+                  System.out.println("1 - Adicionar Contato");
+                  System.out.println("2 - Remover Contato");
+                  System.out.println("3 - Buscar Contato");
+                  System.out.println("4 - Atualizar Contato");
+                  System.out.println("5 - Sair");
 
-      System.out.println("\nbuscar por prefixo: ");
-      agenda.buscarPorPrefixo("Ro");
+                  System.out.print("\nEscolha uma opcao: ");
+                  opcao = scanner.nextInt();
+                  scanner.nextLine();
 
-      System.out.println("\nlista de contatos: ");
-      agenda.listarContatos();
+                  switch (opcao) {
 
-      System.out.println("\nremovendo o Lucas: ");
-      agenda.removerContato("Lucas");
+                        case 1:
+                              System.out.print("Nome: ");
+                              String nome = scanner.nextLine();
 
-      System.out.println("\nlista após remoção: ");
-      agenda.listarContatos();
+                              System.out.print("Telefone: ");
+                              String telefone = scanner.nextLine();
 
+                              System.out.print("Email: ");
+                              String email = scanner.nextLine();
 
-      Contato[] lote = {
-              new Contato("Ana", "4893333-3333"),
-              new Contato("Bruno", "4892222-2222", "bruno@gmail.com")
-      };
+                              agenda.adicionarContato(
+                                      new Contato(nome, telefone, email)
+                              );
 
-      agenda.inserirEmLote(lote);
+                              break;
 
-      System.out.println("\ndps da inserção em lote");
-      agenda.listarContatos();
-   }
+                        case 2:
+                              System.out.print("Nome do contato que deseja remover: ");
+                              nome = scanner.nextLine();
+
+                              agenda.removerContato(nome);
+
+                              break;
+
+                        case 3:
+                              System.out.println("\n1 - Buscar por nome");
+                              System.out.println("2 - Buscar por telefone");
+                              System.out.println("3 - Buscar por prefixo");
+
+                              System.out.print("Escolha uma opcao: ");
+                              int busca = scanner.nextInt();
+                              scanner.nextLine();
+
+                              switch (busca) {
+
+                                    case 1:
+                                          System.out.print("Nome: ");
+                                          nome = scanner.nextLine();
+
+                                          Contato contato = agenda.buscarPorNome(nome);
+
+                                          if (contato != null) {
+                                                System.out.println(contato);
+                                          } else {
+                                                System.out.println("Contato nao encontrado.");
+                                          }
+
+                                          break;
+
+                                    case 2:
+                                          System.out.print("Telefone: ");
+                                          telefone = scanner.nextLine();
+
+                                          contato = agenda.buscarPorTelefone(telefone);
+
+                                          if (contato != null) {
+                                                System.out.println(contato);
+                                          } else {
+                                                System.out.println("Contato nao encontrado.");
+                                          }
+
+                                          break;
+
+                                    case 3:
+                                          System.out.print("Prefixo: ");
+                                          String prefixo = scanner.nextLine();
+
+                                          agenda.buscarPorPrefixo(prefixo);
+
+                                          break;
+
+                                    default:
+                                          System.out.println("Opcao invalida.");
+                              }
+
+                              break;
+
+                        case 4:
+                              System.out.print("Nome do contato: ");
+                              nome = scanner.nextLine();
+
+                              System.out.print("Novo telefone: ");
+                              telefone = scanner.nextLine();
+
+                              System.out.print("Novo email: ");
+                              email = scanner.nextLine();
+
+                              boolean atualizado = agenda.atualizarContato(
+                                      nome,
+                                      telefone,
+                                      email
+                              );
+
+                              if (atualizado) {
+                                    System.out.println("Contato atualizado!");
+                              } else {
+                                    System.out.println("Nao foi possivel atualizar.");
+                              }
+
+                              break;
+
+                        case 5:
+                              System.out.println("Saindo...");
+                              break;
+
+                        default:
+                              System.out.println("Opcao invalida.");
+                  }
+
+            } while (opcao != 5);
+
+            scanner.close();
+      }
 }
