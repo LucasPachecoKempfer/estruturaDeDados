@@ -1,13 +1,13 @@
 package vetor.Exemplos;
 
 import vetor.Produto;
-import vetor.Vetor;
+import vetor.VetorDinamicoGenerico;
 
 public class exemplo1 {
 
     static void main() {
 
-        Vetor<Produto> estoque = new Vetor<>(10);
+        VetorDinamicoGenerico<Produto> estoque = new VetorDinamicoGenerico<>(10);
 
         estoque.inserir(new Produto(1, "Monitor", 500));
         estoque.inserir(new Produto(2, "Teclado", 100));
