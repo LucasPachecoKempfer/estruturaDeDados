@@ -26,31 +26,41 @@ public class Servidor {
 
             // cada processador atende 1 requisição (se houver)
             for (int j = 0; j < numProcessadores; j++) {
+
                 if (!fila.isEmpty()) {
+
                     fila.desenfileirar();
+
                     totalReqAtendidas++;
                 }
             }
 
             // de 0 a N novas requisições
             int novasReq = aleatorio.nextInt(N + 1);
+
             adicionar(novasReq);
         }
     }
 
     public void adicionar(int qtd) {
         for (int i = 0; i < qtd; i++) {
+
             totalReqGeradas++;
+
             if (fila.isEmpty()) {
                 totalReqPerdidas++;
+
             } else {
                 fila.enfileirar("Req #" + totalReqGeradas);
+
             }
         }
     }
 
     public double getProbabilidadePerda() {
+
         if (totalReqGeradas == 0) return 0;
+
         return (double) totalReqPerdidas / totalReqGeradas;
     }
     

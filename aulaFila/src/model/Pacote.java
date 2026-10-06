@@ -2,7 +2,6 @@ package model;
 
 public class Pacote implements Comparable<Pacote> {
 
-
     private int numero;
     private String origem;
     private String destino;
